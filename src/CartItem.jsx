@@ -2,7 +2,6 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { removeItem, updateQuantity } from './CartSlice';
 import './CartItem.css';
-
 const CartItem = ({ onContinueShopping }) => {
   const cart = useSelector(state => state.cart.items);
   const dispatch = useDispatch();
@@ -20,16 +19,23 @@ const CartItem = ({ onContinueShopping }) => {
   };
 
   const handleContinueShopping = (e) => {
-   
+    //En este caso esta funcion es un pro que recibo la cual su funcion es 
+    // cambiar el estado de la variable showCart mediante el hook
+    // setShowCart(false) desde el componente padre. 
+    onContinueShopping(e);
   };
 
 
 
   const handleIncrement = (item) => {
+    console.log('item')
+    console.log(item)
+    dispatch(updateQuantity(item))
   };
 
   const handleDecrement = (item) => {
-   
+    console.log(item)
+    dispatch(updateQuantity(item))
   };
 
   const handleRemove = (item) => {
