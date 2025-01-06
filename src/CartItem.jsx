@@ -1,5 +1,6 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import {  useEffect } from "react";
+import { useSelector, useDispatch  } from 'react-redux';
 import { removeItem, updateQuantity } from './CartSlice';
 import './CartItem.css';
 const CartItem = ({ onContinueShopping }) => {
@@ -28,13 +29,15 @@ const CartItem = ({ onContinueShopping }) => {
 
 
   const handleIncrement = (item) => {
-    //console.log('item')
+    //console.log('handleIncrement')
     //console.log(item)
     dispatch(updateQuantity({name:item.name, quantity:1}))//aqui indico que aumente la cantidad en +1
-  };
+    
+};
 
   const handleDecrement = (item) => {
-    console.log(item.quantity)
+    //console.log('handleDecrement')
+    //console.log(item.quantity)
     if (item.quantity === 1){
         handleRemove(item)
     }
@@ -42,15 +45,26 @@ const CartItem = ({ onContinueShopping }) => {
   };
 
   const handleRemove = (item) => {
-    console.log('handleRemove = (item)')
-    console.log(item)
+    //console.log('handleRemove = (item)')
+    //console.log(item)
     dispatch(removeItem(item))
   };
 
   // Calculate total cost based on quantity for an item
   const calculateTotalCost = (item) => {
-  };
-
+    //console.log('calculateTotalCost')
+    //console.log(item)
+    let totalCost = 0;
+    
+    return totalCost;
+};
+/*
+useEffect(() => {
+    // asi tambien puedo calcular cuando el carrito cambia de estado desde este componente
+    // y calcular luego su cantidad
+    calculateTotalCost(cart);
+  }, [cart]);*/
+  
   return (
     <div className="cart-container">
       <h2 style={{ color: 'black' }}>Total Cart Amount: ${calculateTotalAmount()}</h2>
