@@ -30,12 +30,12 @@ const CartItem = ({ onContinueShopping }) => {
   const handleIncrement = (item) => {
     //console.log('item')
     //console.log(item)
-    dispatch(updateQuantity({name:item.name, quantity:1}))
+    dispatch(updateQuantity({name:item.name, quantity:1}))//aqui indico que aumente la cantidad en +1
   };
 
   const handleDecrement = (item) => {
     //console.log(item)
-    dispatch(updateQuantity({name:item.name, quantity:-1}))
+    dispatch(updateQuantity({name:item.name, quantity:-1}))//aqui indico que disminuya la cantidad en -1
   };
 
   const handleRemove = (item) => {
