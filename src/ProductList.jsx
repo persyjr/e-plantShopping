@@ -9,8 +9,9 @@ function ProductList() {
     const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
     const [addedToCart , setAddedToCart ] = useState({}); // State to add to Cart
 
-    /*const cart = useSelector(state => state.cart.items);
-    otra forma de calcular el estado del carrito de forma directa en este componente
+    
+    /*otra forma de calcular el estado del carrito de forma directa en este componente
+    const cart = useSelector(state => state.cart.items);
     const calculateTotalArticles = () => {
         let totalProducts = 0;
         cart.forEach((item) => {
@@ -23,8 +24,8 @@ function ProductList() {
          console.log(calculateTotalArticles())
          */
     const totalQuantity = useSelector(selectTotalQuantity);
-    console.log('totalQuantity')
-    console.log(totalQuantity)
+    //console.log('totalQuantity')
+    //console.log(totalQuantity)
     const dispatch = useDispatch();
     const handleAddToCart = (product) => {
         dispatch(addItem(product));
@@ -308,7 +309,8 @@ const handlePlantsClick = (e) => {
                         <div  style={{color:'red'}} >{plant.cost}</div>
                         <div className="product-title">{plant.name}</div>
                         {/*Similarly like the above plant.name show other details like description and cost*/}
-                        <button  className="product-button" onClick={() => handleAddToCart(plant)}>Add to Cart</button>
+                        <button  className='product-button' style={addedToCart[plant.name] == true ? {backgroundColor:'red'} :{}} onClick={() => handleAddToCart(plant)} disabled={addedToCart[plant.name] == true ? true :false }>Add to Cart</button>
+                       
                     </div>
                     ))}
                 </div>
@@ -316,7 +318,7 @@ const handlePlantsClick = (e) => {
             ))}
         </div>
  ) :  (
-    <CartItem onContinueShopping={handleContinueShopping}/>
+    <CartItem onContinueShopping={handleContinueShopping} setAddedToCart={setAddedToCart}/>
 )}
     </div>
     );
